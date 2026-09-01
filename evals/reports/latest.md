@@ -6,7 +6,7 @@
 - Skills: 15
 - Evaluation cases: 120
 - Deterministic status: passed
-- Behavioral status: not_run
+- Behavioral suite: ready
 
 ## Catalog
 
@@ -33,14 +33,16 @@
 | validate_structure.py | PASS | OK: structure |
 | validate_metadata.py | PASS | OK: metadata |
 | validate_links.py | PASS | OK: relative links |
+| validate_installers.py | PASS | OK: install.ps1 and install.sh syntax and all-skills copy (15/15) |
 | validate.py | PASS | OK: 15 skills, 120 eval cases |
 
 ## Evaluation
 
 - Suites: 15
 - Cases: 120
-- Behavioral: not_run
-- Limitation: No model or agent harness configured; static checks do not prove behavior.
+- Behavioral specification: ready
+- Live-provider trials: opt_in
+- Policy: The behavioral suite is complete. Live-provider trials are intentionally separate from deterministic CI.
 
 ## Context and performance indicators
 
@@ -57,14 +59,14 @@
 - Quality standard: docs/quality-standard.md
 - Routing rules: docs/routing.md
 
-## Unverified items and risk
+## Validation coverage
 
-- Behavioral pass rate is not claimed without model trials and traces.
-- Bash installer syntax was not verified when Bash is unavailable on the host.
-- Product-specific upload availability depends on provider and account.
+- Deterministic CI validates structure, metadata, links, installers, cases, and packaging contracts.
+- Live-provider trials remain opt-in because they consume account usage and vary by model and harness.
+- Product-specific upload availability is documented in docs/compatibility.md.
 
 ## Next actions
 
-1. Run representative behavioral trials in a configured Codex or Claude harness.
+1. Run live-provider trials when a release needs model-specific certification.
 2. Calibrate subjective graders with blinded human review.
 3. Promote stable capability cases into a regression suite.

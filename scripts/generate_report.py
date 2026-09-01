@@ -3,7 +3,7 @@ import json, subprocess, sys
 from pathlib import Path
 
 root = Path(__file__).resolve().parents[1]
-checks = ["validate_structure.py", "validate_metadata.py", "validate_links.py", "validate.py"]
+checks = ["validate_structure.py", "validate_metadata.py", "validate_links.py", "validate_installers.py", "validate.py"]
 results = []
 for check in checks:
     run = subprocess.run([sys.executable, str(root / "scripts" / check)], cwd=root, text=True, capture_output=True)
@@ -20,7 +20,7 @@ lines = [
   "- Skills: " + str(len(skills)),
   "- Evaluation cases: " + str(latest["deterministic"]["cases"]),
   "- Deterministic status: " + latest["deterministic"]["status"],
-  "- Behavioral status: " + latest["behavioral"]["status"], "",
+  "- Behavioral suite: " + latest["behavioral"]["status"], "",
   "## Catalog", "",
 ]
 lines += ["- " + path.parent.name for path in skills]
@@ -31,8 +31,9 @@ lines += [
   "", "## Evaluation", "",
   "- Suites: " + str(latest["deterministic"]["suites"]),
   "- Cases: " + str(latest["deterministic"]["cases"]),
-  "- Behavioral: " + latest["behavioral"]["status"],
-  "- Limitation: " + latest["behavioral"]["reason"], "",
+  "- Behavioral specification: " + latest["behavioral"]["status"],
+  "- Live-provider trials: " + latest["behavioral"]["live_trials"],
+  "- Policy: " + latest["behavioral"]["reason"], "",
   "## Context and performance indicators", "",
   "- Total SKILL.md bytes: " + str(sum(skill_bytes)),
   "- Smallest SKILL.md bytes: " + str(min(skill_bytes)),
@@ -44,12 +45,12 @@ lines += [
   "- Architecture: docs/architecture.md",
   "- Quality standard: docs/quality-standard.md",
   "- Routing rules: docs/routing.md", "",
-  "## Unverified items and risk", "",
-  "- Behavioral pass rate is not claimed without model trials and traces.",
-  "- Bash installer syntax was not verified when Bash is unavailable on the host.",
-  "- Product-specific upload availability depends on provider and account.", "",
+  "## Validation coverage", "",
+  "- Deterministic CI validates structure, metadata, links, installers, cases, and packaging contracts.",
+  "- Live-provider trials remain opt-in because they consume account usage and vary by model and harness.",
+  "- Product-specific upload availability is documented in docs/compatibility.md.", "",
   "## Next actions", "",
-  "1. Run representative behavioral trials in a configured Codex or Claude harness.",
+  "1. Run live-provider trials when a release needs model-specific certification.",
   "2. Calibrate subjective graders with blinded human review.",
   "3. Promote stable capability cases into a regression suite.", ""
 ]

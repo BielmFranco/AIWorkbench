@@ -74,6 +74,7 @@ Consulte [arquitetura](docs/architecture.md), [roteamento](docs/routing.md), [pa
 
 ```bash
 python scripts/validate.py
+python scripts/validate_installers.py
 python scripts/run_evals.py
 ```
 
