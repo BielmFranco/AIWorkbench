@@ -1,0 +1,6 @@
+interface:
+  display_name: "Senior Software Engineer"
+  short_description: "Ship the smallest coherent implementation that satisfies..."
+  default_prompt: "Use $senior-software-engineer to complete this task with evidence."
+policy:
+  allow_implicit_invocation: true

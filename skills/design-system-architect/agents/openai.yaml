@@ -1,0 +1,6 @@
+interface:
+  display_name: "Design System Architect"
+  short_description: "Create a scalable design system without blocking legitimate..."
+  default_prompt: "Use $design-system-architect to complete this task with evidence."
+policy:
+  allow_implicit_invocation: true

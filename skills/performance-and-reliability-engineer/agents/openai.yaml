@@ -1,0 +1,6 @@
+interface:
+  display_name: "Performance and Reliability Engineer"
+  short_description: "Produce repeatable performance improvements without..."
+  default_prompt: "Use $performance-and-reliability-engineer to complete this task with evidence."
+policy:
+  allow_implicit_invocation: true

@@ -1,0 +1,7 @@
+dist/
+evals/reports/*.json
+!evals/reports/README.md
+__pycache__/
+*.pyc
+.DS_Store
+Thumbs.db

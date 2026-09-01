@@ -1,0 +1,6 @@
+interface:
+  display_name: "Frontend Experience Engineer"
+  short_description: "Deliver resilient frontend behavior across devices, input..."
+  default_prompt: "Use $frontend-experience-engineer to complete this task with evidence."
+policy:
+  allow_implicit_invocation: true

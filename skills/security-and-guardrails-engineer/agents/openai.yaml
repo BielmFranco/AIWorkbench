@@ -1,0 +1,6 @@
+interface:
+  display_name: "Security and Guardrails Engineer"
+  short_description: "Reduce credible security risk with controls at the correct..."
+  default_prompt: "Use $security-and-guardrails-engineer to complete this task with evidence."
+policy:
+  allow_implicit_invocation: true

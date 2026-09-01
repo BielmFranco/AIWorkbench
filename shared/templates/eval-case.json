@@ -1,0 +1,12 @@
+{
+  "id": "skill-01",
+  "skill_expected": "skill",
+  "type": "positive",
+  "input": "request",
+  "context": "constraints",
+  "expected_behavior": "observable behavior",
+  "forbidden_behavior": "failure",
+  "expected_artifacts": [],
+  "success_criteria": [],
+  "grader": []
+}

@@ -1,0 +1,6 @@
+interface:
+  display_name: "Premium UI Designer"
+  short_description: "Create distinctive premium interfaces without generic AI..."
+  default_prompt: "Use $premium-ui-designer to complete this task with evidence."
+policy:
+  allow_implicit_invocation: true

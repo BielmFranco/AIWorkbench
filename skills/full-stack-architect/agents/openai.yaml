@@ -1,0 +1,6 @@
+interface:
+  display_name: "Full-Stack Architect"
+  short_description: "Produce a coherent architecture with explicit ownership,..."
+  default_prompt: "Use $full-stack-architect to complete this task with evidence."
+policy:
+  allow_implicit_invocation: true

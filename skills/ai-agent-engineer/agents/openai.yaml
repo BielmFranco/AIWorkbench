@@ -1,0 +1,6 @@
+interface:
+  display_name: "AI Agent Engineer"
+  short_description: "Build the least autonomous system that reliably completes..."
+  default_prompt: "Use $ai-agent-engineer to complete this task with evidence."
+policy:
+  allow_implicit_invocation: true

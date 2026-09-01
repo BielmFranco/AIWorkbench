@@ -1,0 +1,6 @@
+interface:
+  display_name: "AI Evaluation Engineer"
+  short_description: "Make AI quality changes measurable, fair, and reproducible"
+  default_prompt: "Use $ai-evaluation-engineer to complete this task with evidence."
+policy:
+  allow_implicit_invocation: true

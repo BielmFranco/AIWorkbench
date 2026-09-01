@@ -1,0 +1,6 @@
+interface:
+  display_name: "Context and Prompt Engineer"
+  short_description: "Create a minimal, versioned context contract with measurable..."
+  default_prompt: "Use $context-and-prompt-engineer to complete this task with evidence."
+policy:
+  allow_implicit_invocation: true

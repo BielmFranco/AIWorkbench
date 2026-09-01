@@ -1,0 +1,6 @@
+interface:
+  display_name: "AI Product Strategist"
+  short_description: "Turn an ambiguous AI idea into an evidence-led product..."
+  default_prompt: "Use $ai-product-strategist to complete this task with evidence."
+policy:
+  allow_implicit_invocation: true

@@ -1,0 +1,6 @@
+interface:
+  display_name: "Code Review and Refactoring Expert"
+  short_description: "Find actionable defects or improve structure with tight..."
+  default_prompt: "Use $code-review-and-refactoring-expert to complete this task with evidence."
+policy:
+  allow_implicit_invocation: true
