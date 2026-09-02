@@ -14,7 +14,7 @@ DIST = ROOT / "dist"
 
 def available() -> list[Path]:
     if not SKILLS.is_dir():
-        raise SystemExit(f"Diretório não encontrado: {SKILLS}")
+        raise SystemExit(f"Directory not found: {SKILLS}")
     return sorted(path for path in SKILLS.iterdir() if (path / "SKILL.md").is_file())
 
 
@@ -29,7 +29,7 @@ def package(skill: Path) -> Path:
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description="Empacota skills do AIWorkbench.")
+    parser = argparse.ArgumentParser(description="Package AIWorkbench skills.")
     group = parser.add_mutually_exclusive_group(required=True)
     group.add_argument("--all", action="store_true")
     group.add_argument("--skill")
@@ -39,7 +39,7 @@ def main() -> int:
     if args.skill:
         skills = [path for path in skills if path.name == args.skill]
         if not skills:
-            raise SystemExit(f"Skill desconhecida: {args.skill}")
+            raise SystemExit(f"Unknown skill: {args.skill}")
 
     for skill in skills:
         print(package(skill).relative_to(ROOT))

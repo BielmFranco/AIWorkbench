@@ -7,7 +7,11 @@ errors = []
 pattern = re.compile(r"\[[^]]*\]\(([^)]+)\)")
 for source in root.rglob("*.md"):
     if any(part in {".git", "dist"} for part in source.parts): continue
-    text = source.read_text(encoding="utf-8")
+    try:
+        text = source.read_text(encoding="utf-8")
+    except (FileNotFoundError, UnicodeDecodeError) as exc:
+        errors.append(str(source) + ": cannot read: " + str(exc))
+        continue
     for raw in pattern.findall(text):
         target = raw.strip().split("#", 1)[0]
         if not target or target.startswith(("http://", "https://", "mailto:")): continue

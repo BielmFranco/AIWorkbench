@@ -497,7 +497,12 @@ from pathlib import Path
 root = Path(__file__).resolve().parents[1]
 run = subprocess.run([sys.executable, str(root / "scripts" / "validate.py")], cwd=root, text=True, capture_output=True)
 suites = list((root / "evals" / "cases").glob("*.json"))
-count = sum(len(json.loads(p.read_text(encoding="utf-8"))["cases"]) for p in suites)
+count = 0
+for p in suites:
+    try:
+        count += len(json.loads(p.read_text(encoding="utf-8"))["cases"])
+    except (FileNotFoundError, UnicodeDecodeError, json.JSONDecodeError, KeyError) as exc:
+        print("ERROR reading " + p.name + ": " + str(exc)); sys.exit(1)
 report = {
   "generated_at": datetime.now(timezone.utc).isoformat(),
   "deterministic": {"status": "passed" if run.returncode == 0 else "failed", "suites": len(suites), "cases": count, "output": (run.stdout or run.stderr).strip()},
@@ -545,7 +550,11 @@ root = Path(__file__).resolve().parents[1]
 errors = []
 for folder in sorted((root / "skills").iterdir()):
     if not folder.is_dir(): continue
-    text = (folder / "SKILL.md").read_text(encoding="utf-8")
+    try:
+        text = (folder / "SKILL.md").read_text(encoding="utf-8")
+    except (FileNotFoundError, UnicodeDecodeError) as exc:
+        errors.append(folder.name + ": cannot read SKILL.md: " + str(exc))
+        continue
     front = text.split("---", 2)[1] if text.startswith("---") else ""
     fields = dict(line.split(":", 1) for line in front.splitlines() if ":" in line)
     fields = {key.strip(): value.strip() for key, value in fields.items()}
@@ -555,7 +564,11 @@ for folder in sorted((root / "skills").iterdir()):
         errors.append(folder.name + ": description is not discriminating")
     if not re.fullmatch(r"\\d+\\.\\d+\\.\\d+", fields.get("version", "")):
         errors.append(folder.name + ": invalid version")
-    ui = (folder / "agents" / "openai.yaml").read_text(encoding="utf-8")
+    try:
+        ui = (folder / "agents" / "openai.yaml").read_text(encoding="utf-8")
+    except (FileNotFoundError, UnicodeDecodeError) as exc:
+        errors.append(folder.name + ": cannot read openai.yaml: " + str(exc))
+        continue
     match = re.search(r'^  short_description: "([^"]+)"$', ui, re.M)
     if not match or not 25 <= len(match.group(1)) <= 64:
         errors.append(folder.name + ": invalid UI short_description")
@@ -576,7 +589,11 @@ errors = []
 pattern = re.compile(r"\\[[^]]*\\]\\(([^)]+)\\)")
 for source in root.rglob("*.md"):
     if any(part in {".git", "dist"} for part in source.parts): continue
-    text = source.read_text(encoding="utf-8")
+    try:
+        text = source.read_text(encoding="utf-8")
+    except (FileNotFoundError, UnicodeDecodeError) as exc:
+        errors.append(str(source) + ": cannot read: " + str(exc))
+        continue
     for raw in pattern.findall(text):
         target = raw.strip().split("#", 1)[0]
         if not target or target.startswith(("http://", "https://", "mailto:")): continue
@@ -665,7 +682,7 @@ lines = [
 lines += ["- " + path.parent.name for path in skills]
 lines += ["", "## Deterministic validation", "", "| Check | Status | Evidence |", "| --- | --- | --- |"]
 for name, code, evidence in results:
-    lines.append("| " + name + " | " + ("PASS" if code == 0 else "FAIL") + " | " + evidence.replace("|", "\\\\|") + " |")
+    lines.append("| " + name + " | " + ("PASS" if code == 0 else "FAIL") + " | " + evidence.replace("|", "\\\\|").replace("\\n", " ").replace("\\r", "") + " |")
 lines += [
   "", "## Evaluation", "",
   "- Suites: " + str(latest["deterministic"]["suites"]),

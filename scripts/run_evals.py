@@ -6,7 +6,12 @@ from pathlib import Path
 root = Path(__file__).resolve().parents[1]
 run = subprocess.run([sys.executable, str(root / "scripts" / "validate.py")], cwd=root, text=True, capture_output=True)
 suites = list((root / "evals" / "cases").glob("*.json"))
-count = sum(len(json.loads(p.read_text(encoding="utf-8"))["cases"]) for p in suites)
+count = 0
+for p in suites:
+    try:
+        count += len(json.loads(p.read_text(encoding="utf-8"))["cases"])
+    except (FileNotFoundError, UnicodeDecodeError, json.JSONDecodeError, KeyError) as exc:
+        print("ERROR reading " + p.name + ": " + str(exc)); sys.exit(1)
 report = {
   "generated_at": datetime.now(timezone.utc).isoformat(),
   "deterministic": {"status": "passed" if run.returncode == 0 else "failed", "suites": len(suites), "cases": count, "output": (run.stdout or run.stderr).strip()},

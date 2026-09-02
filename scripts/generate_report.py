@@ -26,7 +26,7 @@ lines = [
 lines += ["- " + path.parent.name for path in skills]
 lines += ["", "## Deterministic validation", "", "| Check | Status | Evidence |", "| --- | --- | --- |"]
 for name, code, evidence in results:
-    lines.append("| " + name + " | " + ("PASS" if code == 0 else "FAIL") + " | " + evidence.replace("|", "\\|") + " |")
+    lines.append("| " + name + " | " + ("PASS" if code == 0 else "FAIL") + " | " + evidence.replace("|", "\\|").replace("\n", " ").replace("\r", "") + " |")
 lines += [
   "", "## Evaluation", "",
   "- Suites: " + str(latest["deterministic"]["suites"]),
