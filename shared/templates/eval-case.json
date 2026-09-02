@@ -7,6 +7,10 @@
   "expected_behavior": "observable behavior",
   "forbidden_behavior": "failure",
   "expected_artifacts": [],
-  "success_criteria": [],
-  "grader": []
+  "success_criteria": [
+    "criterion"
+  ],
+  "grader": [
+    "schema"
+  ]
 }

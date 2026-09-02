@@ -11,21 +11,21 @@ source_root="$repo_root/skills"
 case "$target" in
   codex) destination_root="${CODEX_HOME:-$HOME/.codex}/skills" ;;
   claude) destination_root="$HOME/.claude/skills" ;;
-  *) echo "Uso: $0 codex|claude [all|nome-da-skill]" >&2; exit 2 ;;
+  *) echo "Usage: $0 codex|claude [all|skill-name]" >&2; exit 2 ;;
 esac
 if [ -n "$install_path" ]; then destination_root="$install_path"; fi
 
-[ -d "$source_root" ] || { echo "Diretório não encontrado: $source_root" >&2; exit 1; }
+[ -d "$source_root" ] || { echo "Skills directory not found: $source_root" >&2; exit 1; }
 mkdir -p "$destination_root"
 count=0
 
 install_one() {
   source="$source_root/$1"
-  [ -f "$source/SKILL.md" ] || { echo "Skill desconhecida: $1" >&2; exit 1; }
+  [ -f "$source/SKILL.md" ] || { echo "Unknown skill: $1" >&2; exit 1; }
   destination="$destination_root/$1"
   mkdir -p "$destination"
   cp -R "$source/." "$destination/"
-  printf 'Instalada: %s -> %s\n' "$1" "$destination"
+  printf 'Installed: %s -> %s\n' "$1" "$destination"
   count=$((count + 1))
 }
 
@@ -38,4 +38,4 @@ else
   install_one "$skill"
 fi
 
-printf 'Concluído: %s skill(s) instalada(s) para %s.\n' "$count" "$target"
+printf 'Done: %s skill(s) installed for %s.\n' "$count" "$target"

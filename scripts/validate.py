@@ -19,13 +19,28 @@ for name in expected:
     if "$" + name not in text or "/" + name not in text: errors.append(name + ": missing invocation")
     for resource in resources:
         if not (folder / resource).is_file(): errors.append(name + ": missing " + resource)
-    data = json.loads((root / "evals" / "cases" / (name + ".json")).read_text(encoding="utf-8"))
-    cases = data["cases"]
-    counts = {k: sum(c["type"] == k for c in cases) for k in ("positive", "negative", "adversarial")}
+    try:
+        data = json.loads((root / "evals" / "cases" / (name + ".json")).read_text(encoding="utf-8"))
+    except (FileNotFoundError, json.JSONDecodeError) as exc:
+        errors.append(name + ": " + str(exc)); continue
+    cases = data.get("cases", [])
+    counts = {k: sum(c.get("type") == k for c in cases) for k in ("positive", "negative", "adversarial")}
     if counts != {"positive": 4, "negative": 2, "adversarial": 2}: errors.append(name + ": bad eval distribution")
+    required_case_fields = ["id", "skill_expected", "type", "input", "context", "expected_behavior", "forbidden_behavior", "expected_artifacts", "success_criteria", "grader"]
+    valid_types = {"positive", "negative", "adversarial"}
     for case in cases:
-        if case["id"] in ids: errors.append("duplicate " + case["id"])
-        ids.add(case["id"])
+        cid = case.get("id", "unknown")
+        if cid in ids: errors.append("duplicate " + cid)
+        ids.add(cid)
+        for field in required_case_fields:
+            if field not in case: errors.append(cid + ": missing field " + field)
+        if case.get("type") not in valid_types: errors.append(cid + ": invalid type " + str(case.get("type")))
+        for str_field in ("id", "input", "context", "expected_behavior", "forbidden_behavior"):
+            if str_field in case and isinstance(case[str_field], str) and not case[str_field]: errors.append(cid + ": empty " + str_field)
+        for arr_field in ("success_criteria", "grader"):
+            if arr_field in case and isinstance(case[arr_field], list) and not case[arr_field]: errors.append(cid + ": empty " + arr_field)
+        extra = set(case.keys()) - set(required_case_fields)
+        if extra: errors.append(cid + ": unexpected fields " + str(extra))
 if errors:
     print("\n".join("ERROR " + e for e in errors)); sys.exit(1)
 print("OK: %d skills, %d eval cases" % (len(expected), len(ids)))

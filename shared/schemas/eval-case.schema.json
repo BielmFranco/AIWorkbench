@@ -40,18 +40,26 @@
             "minLength": 1
           },
           "skill_expected": {
-            "type": ["string", "null"]
+            "type": [
+              "string",
+              "null"
+            ]
           },
           "type": {
             "type": "string",
-            "enum": ["positive", "negative", "adversarial"]
+            "enum": [
+              "positive",
+              "negative",
+              "adversarial"
+            ]
           },
           "input": {
             "type": "string",
             "minLength": 1
           },
           "context": {
-            "type": "string"
+            "type": "string",
+            "minLength": 1
           },
           "expected_behavior": {
             "type": "string",
