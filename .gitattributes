@@ -1,0 +1,11 @@
+# Force LF line endings for shell scripts on all platforms
+*.sh text eol=lf
+
+# Keep PowerShell scripts with CRLF for Windows compatibility
+*.ps1 text eol=crlf
+
+# Normalize text files
+*.md text auto
+*.json text auto
+*.yaml text auto
+*.py text auto

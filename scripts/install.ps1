@@ -12,7 +12,7 @@ $repositoryRoot = Split-Path -Parent $PSScriptRoot
 $sourceRoot = Join-Path $repositoryRoot "skills"
 
 if (-not (Test-Path -LiteralPath $sourceRoot -PathType Container)) {
-    throw "Diretório de skills não encontrado: $sourceRoot"
+    throw "Skills directory not found: $sourceRoot"
 }
 
 if ($Target -eq "codex") {
@@ -30,7 +30,7 @@ $sources = if ($Skill -eq "all") {
 } else {
     $selected = Join-Path $sourceRoot $Skill
     if (-not (Test-Path -LiteralPath (Join-Path $selected "SKILL.md") -PathType Leaf)) {
-        throw "Skill desconhecida: $Skill"
+        throw "Unknown skill: $Skill"
     }
     @(Get-Item -LiteralPath $selected)
 }
@@ -41,7 +41,7 @@ foreach ($source in $sources) {
     New-Item -ItemType Directory -Force -Path $destination | Out-Null
     Get-ChildItem -LiteralPath $source.FullName -Force |
         Copy-Item -Destination $destination -Recurse -Force
-    Write-Host "Instalada: $($source.Name) -> $destination"
+    Write-Host "Installed: $($source.Name) -> $destination"
 }
 
-Write-Host "Concluído: $($sources.Count) skill(s) instalada(s) para $Target."
+Write-Host "Done: $($sources.Count) skill(s) installed for $Target."

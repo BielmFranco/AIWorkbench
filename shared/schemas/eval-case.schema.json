@@ -6,16 +6,83 @@
     "version",
     "cases"
   ],
+  "additionalProperties": false,
   "properties": {
     "skill": {
-      "type": "string"
+      "type": "string",
+      "minLength": 1
     },
     "version": {
-      "type": "string"
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
     },
     "cases": {
       "type": "array",
-      "minItems": 8
+      "minItems": 8,
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "skill_expected",
+          "type",
+          "input",
+          "context",
+          "expected_behavior",
+          "forbidden_behavior",
+          "expected_artifacts",
+          "success_criteria",
+          "grader"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "skill_expected": {
+            "type": ["string", "null"]
+          },
+          "type": {
+            "type": "string",
+            "enum": ["positive", "negative", "adversarial"]
+          },
+          "input": {
+            "type": "string",
+            "minLength": 1
+          },
+          "context": {
+            "type": "string"
+          },
+          "expected_behavior": {
+            "type": "string",
+            "minLength": 1
+          },
+          "forbidden_behavior": {
+            "type": "string",
+            "minLength": 1
+          },
+          "expected_artifacts": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "success_criteria": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "minItems": 1
+          },
+          "grader": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "minItems": 1
+          }
+        }
+      }
     }
   }
 }
