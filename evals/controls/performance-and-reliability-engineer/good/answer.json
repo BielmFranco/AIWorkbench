@@ -1,0 +1,7 @@
+{
+  "baseline_p95": 190,
+  "candidate_p95": 95,
+  "comparable": true,
+  "scope": "supplied_fixture",
+  "rationale": "Nearest-rank p95 decreases under the supplied matched load; sample is only 20 requests and no live benchmark was run."
+}

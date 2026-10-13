@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "milestones",
+    "write_owner",
+    "stop_on",
+    "recovery_path",
+    "rationale",
+    "executed"
+  ],
+  "properties": {
+    "milestones": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 1
+    },
+    "write_owner": {
+      "type": "string",
+      "minLength": 1
+    },
+    "stop_on": {
+      "type": "string",
+      "minLength": 1
+    },
+    "recovery_path": {
+      "type": "string",
+      "minLength": 1
+    },
+    "rationale": {
+      "type": "string",
+      "minLength": 1
+    },
+    "executed": {
+      "type": "boolean"
+    }
+  }
+}

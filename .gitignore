@@ -1,4 +1,7 @@
 dist/
+.venv/
+.tmp/
+evals/runs/
 evals/reports/*.json
 !evals/reports/README.md
 __pycache__/

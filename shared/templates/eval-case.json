@@ -1,16 +1,15 @@
 {
-  "id": "skill-01",
-  "skill_expected": "skill",
-  "type": "positive",
-  "input": "request",
-  "context": "constraints",
-  "expected_behavior": "observable behavior",
-  "forbidden_behavior": "failure",
-  "expected_artifacts": [],
-  "success_criteria": [
-    "criterion"
+  "id": "example-local-import",
+  "mode": "outcome",
+  "prompt": "Read fixtures/brief.json and implement its public contract. Save the solution in output/solution.py.",
+  "fixtures": "evals/fixtures/senior-software-engineer",
+  "assertions": [
+    {
+      "id": "observed-import-behavior",
+      "kind": "python_test",
+      "artifact": "solution.py",
+      "test": "evals/graders/senior-software-engineer_check.py"
+    }
   ],
-  "grader": [
-    "schema"
-  ]
+  "human_rubric": []
 }

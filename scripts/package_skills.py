@@ -24,7 +24,7 @@ def package(skill: Path) -> Path:
     with ZipFile(output, "w", ZIP_DEFLATED) as archive:
         for path in sorted(skill.rglob("*")):
             if path.is_file():
-                archive.write(path, path.relative_to(skill))
+                archive.write(path, Path(skill.name) / path.relative_to(skill))
     return output
 
 

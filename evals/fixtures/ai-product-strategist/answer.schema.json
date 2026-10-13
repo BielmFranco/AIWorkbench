@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "baseline_minutes",
+    "misroute_baseline_known",
+    "pilot_run",
+    "decision_owner",
+    "rationale"
+  ],
+  "properties": {
+    "baseline_minutes": {
+      "type": "number"
+    },
+    "misroute_baseline_known": {
+      "type": "boolean"
+    },
+    "pilot_run": {
+      "type": "boolean"
+    },
+    "decision_owner": {
+      "type": "string",
+      "minLength": 1
+    },
+    "rationale": {
+      "type": "string",
+      "minLength": 1
+    }
+  }
+}

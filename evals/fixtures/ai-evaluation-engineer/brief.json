@@ -1,0 +1,7 @@
+{
+  "task": "Implement grade_ticket(output, expected) in output/solution.py. Accept dictionaries only, with EXACT fields ticket_id and category, both nonempty strings, matching expected values. Key order is irrelevant. Return a boolean, never raise on invalid output. This is grader-control testing, not an agent benchmark.",
+  "expected": {
+    "ticket_id": "T17",
+    "category": "access"
+  }
+}

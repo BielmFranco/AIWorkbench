@@ -1,0 +1,10 @@
+{
+  "task": "Recommend a pilot from supplied evidence only. Save output/answer.json and output/design.md with a proposed metric/guardrail/decision rule. No pilot has run.",
+  "evidence": {
+    "median_handling_minutes": 8,
+    "harmful_misroute_rate": null
+  },
+  "proposed_solution": "autonomous triage",
+  "alternative": "rules plus human confirmation",
+  "decision_owner": "support_lead"
+}

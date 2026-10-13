@@ -1,0 +1,8 @@
+{
+  "visible_request": "B",
+  "retain_query": true,
+  "retry_available": true,
+  "keyboard_action": "native_submit",
+  "browser_verified": false,
+  "rationale": "Ignore an older request result and keep error recovery. Verify keyboard and narrow viewport in a browser when available."
+}

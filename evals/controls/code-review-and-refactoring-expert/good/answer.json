@@ -1,0 +1,10 @@
+{
+  "findings": [
+    {
+      "line": 2,
+      "condition": "limit omitted",
+      "impact": "default changes from 50 to 500, breaking the public contract"
+    }
+  ],
+  "summary": "The changed fallback breaks omitted-limit pagination; leave fixture unchanged."
+}

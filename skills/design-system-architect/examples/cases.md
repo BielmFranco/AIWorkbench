@@ -1,13 +1,14 @@
-# Examples
+# Worked example: semantic action tokens
 
-## Codex/OpenAI
+## Input
+Two products share button behavior but use different brand colors. Consumers currently read raw palette values.
 
-`$design-system-architect Define semantic color tokens.`
+```json
+{"action.background":{"light":"brand.600","dark":"brand.300"},"action.text":{"light":"neutral.0","dark":"neutral.950"}}
+```
 
-## Claude Code
+## Decision
+Treat the mapping as illustrative token intent, not a claim that those values meet contrast. Validate actual resolved values in both themes. The component contract includes focus, disabled, pending and keyboard activation.
 
-`/design-system-architect Architect a multi-brand cross-platform system.`
-
-## Non-trigger
-
-Style one campaign page.
+## Migration
+Map the old consumer prop to the semantic role during a deprecation window. Migrate one real consumer, inspect themes and states, and document any unsupported brand mapping before removal.

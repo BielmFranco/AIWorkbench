@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "visible_request",
+    "retain_query",
+    "retry_available",
+    "keyboard_action",
+    "browser_verified",
+    "rationale"
+  ],
+  "properties": {
+    "visible_request": {
+      "type": "string",
+      "minLength": 1
+    },
+    "retain_query": {
+      "type": "boolean"
+    },
+    "retry_available": {
+      "type": "boolean"
+    },
+    "keyboard_action": {
+      "type": "string",
+      "minLength": 1
+    },
+    "browser_verified": {
+      "type": "boolean"
+    },
+    "rationale": {
+      "type": "string",
+      "minLength": 1
+    }
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "task": "Implement process_events(events) in output/solution.py. Each input is a dict with event_id and receipt. Return the receipt of the FIRST occurrence of each event_id, in arrival order. Do not mutate the caller's list or records. This is a local pure-function import fixture; it has no network effects.",
+  "events": [
+    {
+      "event_id": "a",
+      "receipt": "r1"
+    },
+    {
+      "event_id": "a",
+      "receipt": "wrong"
+    },
+    {
+      "event_id": "b",
+      "receipt": "r2"
+    }
+  ],
+  "public_contract": "list in, list out; duplicates use first receipt"
+}

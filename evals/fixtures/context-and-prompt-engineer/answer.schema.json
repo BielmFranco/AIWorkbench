@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "ticket_id",
+    "category",
+    "needs_review"
+  ],
+  "properties": {
+    "ticket_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "category": {
+      "enum": [
+        "access",
+        "billing"
+      ]
+    },
+    "needs_review": {
+      "type": "boolean"
+    }
+  }
+}

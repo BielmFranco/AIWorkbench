@@ -1,13 +1,13 @@
-# Examples
+# Worked example: grader calibration
 
-## Codex/OpenAI
+## Task
+Extract a ticket ID and category into JSON. Allowed category values are `access` and `billing`.
 
-`$ai-evaluation-engineer Evaluate ticket classification.`
+## Controls
+Correct: `{"ticket_id":"T17","category":"access"}`. Valid alternative: reordered keys with the same values. Wrong: `{"ticket_id":"T17","category":"billing"}` for a sign-in email. Incomplete: missing ticket ID.
 
-## Claude Code
+## Grading
+A schema check catches missing fields and invalid categories. A separate expected-value check catches the plausible wrong category. Both valid serializations pass. No criterion depends on headings or the model asserting it followed the skill.
 
-`/ai-evaluation-engineer Build a coding-agent eval harness.`
-
-## Non-trigger
-
-Test a deterministic date parser.
+## Trial evidence
+Run the same fixture with baseline and candidate, save outputs and settings, then report outcome rate and time/tokens if measured. Mark rubric items pending when no calibrated reviewer has scored them.

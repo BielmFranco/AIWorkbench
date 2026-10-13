@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "primary_task",
+    "brand_preserved",
+    "comparison_dimensions",
+    "render_inspected",
+    "rationale"
+  ],
+  "properties": {
+    "primary_task": {
+      "type": "string",
+      "minLength": 1
+    },
+    "brand_preserved": {
+      "type": "boolean"
+    },
+    "comparison_dimensions": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 1
+    },
+    "render_inspected": {
+      "type": "boolean"
+    },
+    "rationale": {
+      "type": "string",
+      "minLength": 1
+    }
+  }
+}

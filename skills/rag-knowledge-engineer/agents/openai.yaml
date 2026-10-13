@@ -1,6 +1,6 @@
 interface:
   display_name: "RAG Knowledge Engineer"
-  short_description: "Deliver grounded permission-safe answers from the smallest..."
-  default_prompt: "Use $rag-knowledge-engineer to complete this task with evidence."
+  short_description: "Design permission-safe retrieval and grounded answers"
+  default_prompt: "Use $rag-knowledge-engineer to complete the requested task and report its relevant evidence."
 policy:
   allow_implicit_invocation: true

@@ -1,6 +1,6 @@
 interface:
   display_name: "Tech Lead"
-  short_description: "Create a delivery plan whose scope, dependencies, risks,..."
-  default_prompt: "Use $tech-lead to complete this task with evidence."
+  short_description: "Plan milestones, dependencies, decisions and rollout"
+  default_prompt: "Use $tech-lead to complete the requested task and report its relevant evidence."
 policy:
   allow_implicit_invocation: true

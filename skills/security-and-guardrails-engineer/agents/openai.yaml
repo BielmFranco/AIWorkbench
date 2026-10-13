@@ -1,6 +1,6 @@
 interface:
   display_name: "Security and Guardrails Engineer"
-  short_description: "Reduce credible security risk with controls at the correct..."
-  default_prompt: "Use $security-and-guardrails-engineer to complete this task with evidence."
+  short_description: "Assess trust boundaries and verify enforceable controls"
+  default_prompt: "Use $security-and-guardrails-engineer to complete the requested task and report its relevant evidence."
 policy:
   allow_implicit_invocation: true

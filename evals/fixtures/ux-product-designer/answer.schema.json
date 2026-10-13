@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "reported_participants",
+    "retain_workspace",
+    "hypothesis_is_result",
+    "new_study_run",
+    "rationale"
+  ],
+  "properties": {
+    "reported_participants": {
+      "type": "integer"
+    },
+    "retain_workspace": {
+      "type": "boolean"
+    },
+    "hypothesis_is_result": {
+      "type": "boolean"
+    },
+    "new_study_run": {
+      "type": "boolean"
+    },
+    "rationale": {
+      "type": "string",
+      "minLength": 1
+    }
+  }
+}

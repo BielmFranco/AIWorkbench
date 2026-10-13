@@ -1,0 +1,5 @@
+{
+  "task": "Implement resolve(provider, key, max_attempts) in output/solution.py. provider.refund(key) can time out after applying the effect. provider.lookup(key) returns issued, pending or denied. Return issued, denied or unresolved as a string. Count BOTH tool calls against max_attempts. Recover ambiguity by lookup using the original key; do not issue a new unrelated mutation. Reject a nonpositive budget with ValueError.",
+  "state_owner": "provider",
+  "authorization": "enforced by provider before effect"
+}

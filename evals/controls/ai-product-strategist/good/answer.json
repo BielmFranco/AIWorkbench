@@ -1,0 +1,7 @@
+{
+  "baseline_minutes": 8,
+  "misroute_baseline_known": false,
+  "pilot_run": false,
+  "decision_owner": "support_lead",
+  "rationale": "Measure harmful misroutes and review time; compare assisted suggestions with rules before deciding on autonomy. Agree targets and guardrails before execution."
+}

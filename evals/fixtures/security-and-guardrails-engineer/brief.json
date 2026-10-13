@@ -1,0 +1,10 @@
+{
+  "task": "Implement can_refund(principal, charge) in output/solution.py. principal is a server-authenticated dict with account_id and authenticated. charge.owner is server-owned. Return True only for authenticated matching owner; missing fields or non-dicts deny. No caller payload may grant authority.",
+  "principal": {
+    "account_id": "A",
+    "authenticated": true
+  },
+  "charge": {
+    "owner": "B"
+  }
+}

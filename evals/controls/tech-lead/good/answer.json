@@ -1,0 +1,12 @@
+{
+  "milestones": [
+    "shadow one authorized read",
+    "compare results",
+    "bounded cutover"
+  ],
+  "write_owner": "monolith",
+  "stop_on": "unexplained_mismatch",
+  "recovery_path": "monolith_read",
+  "rationale": "Writes remain in monolith; stop on mismatch and restore original reads. Assign comparison and cutover ownership before rollout.",
+  "executed": false
+}

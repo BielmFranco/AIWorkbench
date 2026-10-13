@@ -1,0 +1,9 @@
+{
+  "kind": "agent",
+  "command": [
+    "python",
+    "evals/adapters/codex_adapter.py",
+    "--home",
+    "/absolute/path/to/dedicated-authenticated-codex-home"
+  ]
+}

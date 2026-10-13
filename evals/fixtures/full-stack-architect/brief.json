@@ -1,0 +1,9 @@
+{
+  "task": "Design only. Save output/answer.json with payment_owner, recovery_mechanism, repeat_charge, rationale and executed.",
+  "payment_owner": "payment_service",
+  "scenario": "Payment is already confirmed. The process stops before notifying orders. Repeating an unrelated charge is forbidden. Delayed notification is acceptable.",
+  "alternatives": [
+    "outbox",
+    "reconciliation"
+  ]
+}

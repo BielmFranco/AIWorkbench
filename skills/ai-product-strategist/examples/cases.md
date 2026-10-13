@@ -1,13 +1,13 @@
-# Examples
+# Worked example: support triage pilot
 
-## Codex/OpenAI
+## Input evidence
+Supplied queue data shows median handling time of 8 minutes. Misroute rate is not measured. The team proposes autonomous triage.
 
-`$ai-product-strategist Prioritize three AI features for a support product.`
+## Recommendation
+Start with AI suggestions and human confirmation while measuring harmful misroutes and review time. Compare with a rules baseline on the same queue.
 
-## Claude Code
+## Proposed gate
+The owner must agree to the improvement target, maximum harmful-error rate, measurement window and sample before launch. These are proposed decision parameters, not results. Halt or narrow the pilot if its agreed guardrail is breached.
 
-`/ai-product-strategist Design a regulated enterprise-agent roadmap.`
-
-## Non-trigger
-
-Implement an approved REST endpoint.
+## Unsupported claim
+'The pilot will reduce cost by 40%' without data or assumptions. Give the evidence required to estimate value instead.

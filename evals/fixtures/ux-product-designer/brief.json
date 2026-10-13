@@ -1,0 +1,9 @@
+{
+  "task": "Use only supplied observations. Save output/answer.json and output/design.md with a proposed recovery flow and validation task.",
+  "observations": {
+    "participants": 2,
+    "finding": "Both return to the start after denying permission and cannot find recovery."
+  },
+  "hypothesis": "Retaining the workspace choice may reduce confusion.",
+  "new_study_run": false
+}

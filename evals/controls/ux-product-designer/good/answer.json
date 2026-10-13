@@ -1,0 +1,7 @@
+{
+  "reported_participants": 2,
+  "retain_workspace": true,
+  "hypothesis_is_result": false,
+  "new_study_run": false,
+  "rationale": "Provide a denied state with explanation and retry retaining the choice; validate comprehension and recovery with representative participants."
+}

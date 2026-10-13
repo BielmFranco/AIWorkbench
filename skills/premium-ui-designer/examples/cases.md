@@ -1,13 +1,13 @@
-# Examples
+# Worked example: pricing critique
 
-## Codex/OpenAI
+## Brief
+A B2B research product needs buyers to compare retention, seats and usage limits. The audience scans details before choosing a plan. The supplied brand is restrained and technical.
 
-`$premium-ui-designer Refine a premium pricing page.`
+## Weak decision
+Oversized decorative plan names and identical cards hide the actual differences; the primary action competes with three unrelated accents.
 
-## Claude Code
+## Better decision
+Give the comparison rows and meaningful plan differences a clear reading order. Use one dominant action and a type scale that keeps price and limits readable. Make the mobile ordering preserve the plan's price, limits and action together.
 
-`/premium-ui-designer Design a high-end AI research workspace.`
-
-## Non-trigger
-
-Implement a finalized Figma screen.
+## Render review
+Inspect long plan names and actual usage limits at desktop and narrow widths. A critique should identify visible evidence, proposed correction, and any unrendered assumption. This illustrative case is not a completed visual benchmark.

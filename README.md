@@ -7,7 +7,7 @@ Skills profissionais para agentes de codificação projetarem, implementarem, re
 [![Baixar ZIP](https://img.shields.io/badge/Baixar-ZIP-7c3aed?style=for-the-badge)](https://github.com/BielmFranco/AIWorkbench/archive/refs/heads/main.zip)
 [![Licença MIT](https://img.shields.io/badge/Licen%C3%A7a-MIT-111827?style=for-the-badge)](LICENSE)
 
-> Status: desenvolvimento inicial. Validações automatizadas comprovadas serão publicadas em `evals/reports/`.
+> Status: desenvolvimento inicial. Consulte [o relatório de validação](evals/reports/latest.md); ele distingue verificações determinísticas de avaliações comportamentais ainda não executadas.
 
 ## Instalação
 
@@ -73,10 +73,15 @@ Consulte [arquitetura](docs/architecture.md), [roteamento](docs/routing.md), [pa
 ## Validação
 
 ```bash
+python -m pip install -r requirements-dev.txt
 python scripts/validate.py
+python scripts/validate_links.py
 python scripts/validate_installers.py
+python -m unittest discover -s tests -v
 python scripts/run_evals.py
 ```
+
+As skills 1.2.0 usam o formato Agent Skills com `metadata.version`, exemplos acessíveis e modelos próprios de cada domínio. O catálogo tem 75 casos de desenvolvimento com fixtures e avaliadores concretos. O comando padrão valida especificações; para executar ensaios pareados com um agente, configure um adaptador conforme [a metodologia](docs/evaluation-methodology.md). Verificações automáticas de contratos não substituem as rubricas humanas de projeto e design.
 
 ## Licença
 

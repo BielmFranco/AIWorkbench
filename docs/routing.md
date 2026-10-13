@@ -20,4 +20,8 @@ Explicit invocation selects the named skill. Without explicit invocation, route 
 | Measure performance or reliability | performance-and-reliability-engineer | Baselines, profiles, load |
 | Review or preserve behavior while restructuring | code-review-and-refactoring-expert | Review-only versus authorized edits |
 
-Cross-cutting skills compose only when their concern is requested or materially affects the outcome. Product precedes planning; planning precedes architecture; architecture precedes implementation. UX defines flow, premium UI defines visual direction, design systems define reuse, and frontend engineering implements the experience.
+Choose only the concern needed for the requested outcome. A small approved implementation does not require product discovery or a new architecture phase. UX defines flow, premium UI defines visual direction, design systems define reuse, and frontend engineering implements interaction; combine them only when those concerns are part of the task.
+
+Review-only selects code-review-and-refactoring-expert without edits. An authorized behavior-preserving restructure uses its refactor mode. New behavior selects senior-software-engineer or frontend-experience-engineer according to the affected boundary. Prompt/context, retrieval, agent orchestration and AI evaluation select their respective primary skill; shared words such as 'AI' or 'quality' do not activate the entire catalog.
+
+Validate ambiguous and adjacent prompts in both Portuguese and English using observed resource selection. Explicit invocation identifies the requested skill but does not expand user scope or grant external-action authority.

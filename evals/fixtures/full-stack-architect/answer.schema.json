@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "payment_owner",
+    "recovery_mechanism",
+    "repeat_charge",
+    "rationale",
+    "executed"
+  ],
+  "properties": {
+    "payment_owner": {
+      "type": "string",
+      "minLength": 1
+    },
+    "recovery_mechanism": {
+      "type": "string",
+      "minLength": 1
+    },
+    "repeat_charge": {
+      "type": "boolean"
+    },
+    "rationale": {
+      "type": "string",
+      "minLength": 1
+    },
+    "executed": {
+      "type": "boolean"
+    }
+  }
+}

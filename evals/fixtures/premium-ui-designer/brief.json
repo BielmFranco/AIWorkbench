@@ -1,0 +1,16 @@
+{
+  "task": "Propose visual direction only. Save output/answer.json and output/design.md. Use the supplied restrained technical brand; no images or render tools are supplied.",
+  "audience": "B2B research buyers comparing retention, seats and usage",
+  "brand": "restrained technical",
+  "content": {
+    "plans": [
+      "Independent researcher",
+      "Research organization with external collaborators"
+    ],
+    "comparison_rows": [
+      "retention",
+      "seats",
+      "usage"
+    ]
+  }
+}

@@ -1,35 +1,43 @@
 #!/usr/bin/env python3
 from pathlib import Path
-import re, sys
+import sys
+from skill_format import load_yaml, validate_skill, yaml
 
-root = Path(__file__).resolve().parents[1]
-errors = []
-for folder in sorted((root / "skills").iterdir()):
-    if not folder.is_dir(): continue
-    try:
-        text = (folder / "SKILL.md").read_text(encoding="utf-8")
-    except (FileNotFoundError, UnicodeDecodeError) as exc:
-        errors.append(folder.name + ": cannot read SKILL.md: " + str(exc))
-        continue
-    front = text.split("---", 2)[1] if text.startswith("---") else ""
-    fields = dict(line.split(":", 1) for line in front.splitlines() if ":" in line)
-    fields = {key.strip(): value.strip() for key, value in fields.items()}
-    if fields.get("name") != folder.name: errors.append(folder.name + ": name mismatch")
-    description = fields.get("description", "")
-    if len(description) < 80 or "Use for " not in description or "do not use" not in description:
-        errors.append(folder.name + ": description is not discriminating")
-    if not re.fullmatch(r"\d+\.\d+\.\d+", fields.get("version", "")):
-        errors.append(folder.name + ": invalid version")
-    try:
-        ui = (folder / "agents" / "openai.yaml").read_text(encoding="utf-8")
-    except (FileNotFoundError, UnicodeDecodeError) as exc:
-        errors.append(folder.name + ": cannot read openai.yaml: " + str(exc))
-        continue
-    match = re.search(r'^  short_description: "([^"]+)"$', ui, re.M)
-    if not match or not 25 <= len(match.group(1)) <= 64:
-        errors.append(folder.name + ": invalid UI short_description")
-    if "Use $" + folder.name not in ui:
-        errors.append(folder.name + ": invalid default prompt")
-if errors:
-    print("\n".join("ERROR " + error for error in errors)); sys.exit(1)
-print("OK: metadata")
+ROOT = Path(__file__).resolve().parents[1]
+
+
+def check(root=ROOT):
+    errors = []
+    for folder in sorted((root / "skills").iterdir()):
+        if not folder.is_dir() or folder.name.startswith("."):
+            continue
+        errors.extend(f"{folder.name}: {e}" for e in validate_skill(folder / "SKILL.md"))
+        ui_file = folder / "agents" / "openai.yaml"
+        if not ui_file.exists():
+            continue
+        try:
+            ui = load_yaml(ui_file.read_text(encoding="utf-8"))
+            if not isinstance(ui, dict) or not isinstance(ui.get("interface"), dict):
+                raise ValueError("UI metadata must contain an interface mapping")
+            interface = ui["interface"]
+            for key in ("display_name", "short_description", "default_prompt"):
+                if not isinstance(interface.get(key), str) or not interface[key].strip():
+                    errors.append(f"{folder.name}: invalid {key}")
+            short = interface.get("short_description", "")
+            if isinstance(short, str) and not 25 <= len(short) <= 64:
+                errors.append(f"{folder.name}: UI short_description must have 25–64 characters")
+            prompt = interface.get("default_prompt", "")
+            if isinstance(prompt, str) and "$" + folder.name not in prompt:
+                errors.append(f"{folder.name}: default_prompt must mention the skill")
+            policy = ui.get("policy", {})
+            if not isinstance(policy, dict) or ("allow_implicit_invocation" in policy and not isinstance(policy["allow_implicit_invocation"], bool)):
+                errors.append(f"{folder.name}: invalid invocation policy")
+        except (OSError, UnicodeError, ValueError, TypeError, yaml.YAMLError) as exc:
+            errors.append(f"{folder.name}: {exc}")
+    return errors
+
+
+if __name__ == "__main__":
+    errors = check()
+    print("\n".join("ERROR " + e for e in errors) if errors else "OK: Agent Skills format and UI metadata")
+    sys.exit(bool(errors))

@@ -1,0 +1,7 @@
+{
+  "payment_owner": "payment_service",
+  "recovery_mechanism": "outbox",
+  "repeat_charge": false,
+  "rationale": "Persist notification intent with local payment outcome and deduplicate delivery; reconcile unresolved events. The dispatcher needs ownership and monitoring.",
+  "executed": false
+}

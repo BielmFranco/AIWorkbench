@@ -1,0 +1,9 @@
+{
+  "task": "Review only. Save output/answer.json, with findings containing line, condition, impact, and a summary. Do not edit the fixture.",
+  "api_contract": "When limit is omitted, default is 50. Explicit positive limits are supported.",
+  "base": "def page(limit=None):\n    size = limit or 50\n    return size\n",
+  "candidate": "def page(limit=None):\n    size = limit or 500\n    return size\n",
+  "line_numbers": {
+    "fallback": 2
+  }
+}

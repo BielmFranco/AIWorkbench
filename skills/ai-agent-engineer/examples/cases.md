@@ -1,13 +1,13 @@
-# Examples
+# Worked example: refund timeout
 
-## Codex/OpenAI
+## Input
+An authorized refund call times out. The provider may have issued it. The request key is `acct7:req9`.
 
-`$ai-agent-engineer Build an approval-gated support agent.`
+## Unsafe recovery
+Issue another refund with a fresh key because the first call returned no response.
 
-## Claude Code
+## Expected transition
+Move from requested to unresolved, query `acct7:req9`, and confirm the original refund if present. Retry only using the same key under the provider's documented semantics. Escalate when the bounded recovery cannot confirm state. The ownership check stays in the service.
 
-`/ai-agent-engineer Design a repository-editing coding agent.`
-
-## Non-trigger
-
-Write a CSV transformation script.
+## Evidence
+A local provider fake exercises 'effect happened, response lost', denial and duplicate requests. The ledger contains one refund and the final status is confirmed or explicitly unresolved. A design-only answer proposes these checks and makes no execution claim.

@@ -1,0 +1,10 @@
+{
+  "semantic_role": "action.background",
+  "themes": [
+    "light",
+    "dark"
+  ],
+  "compatibility_mapping": true,
+  "contrast_verified": false,
+  "rationale": "Keep an old-prop mapping during migration, validate resolved themes and states on one real consumer before removing the prop."
+}

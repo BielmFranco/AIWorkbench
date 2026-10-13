@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "baseline_p95",
+    "candidate_p95",
+    "comparable",
+    "scope",
+    "rationale"
+  ],
+  "properties": {
+    "baseline_p95": {
+      "type": "number"
+    },
+    "candidate_p95": {
+      "type": "number"
+    },
+    "comparable": {
+      "type": "boolean"
+    },
+    "scope": {
+      "type": "string",
+      "minLength": 1
+    },
+    "rationale": {
+      "type": "string",
+      "minLength": 1
+    }
+  }
+}

@@ -1,0 +1,5 @@
+{
+  "task": "Specify the search interaction in output/answer.json; also save output/design.md describing how it will be verified in a running browser. This task is a specification, not implementation.",
+  "scenario": "Request A starts, request B starts, B completes, A completes. B must remain visible. Failure must retain the query and offer retry.",
+  "browser_available": false
+}

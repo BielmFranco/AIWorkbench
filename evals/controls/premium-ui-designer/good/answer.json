@@ -1,0 +1,11 @@
+{
+  "primary_task": "compare_plans",
+  "brand_preserved": true,
+  "comparison_dimensions": [
+    "retention",
+    "seats",
+    "usage"
+  ],
+  "render_inspected": false,
+  "rationale": "Prioritize meaningful limits and price; keep the brand while planning long-label and narrow-viewport checks."
+}

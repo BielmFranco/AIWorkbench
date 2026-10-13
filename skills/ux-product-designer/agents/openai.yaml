@@ -1,6 +1,6 @@
 interface:
   display_name: "UX Product Designer"
-  short_description: "Make important user tasks understandable, efficient, and..."
-  default_prompt: "Use $ux-product-designer to complete this task with evidence."
+  short_description: "Design task flows and validate user comprehension"
+  default_prompt: "Use $ux-product-designer to complete the requested task and report its relevant evidence."
 policy:
   allow_implicit_invocation: true

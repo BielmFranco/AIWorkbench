@@ -1,0 +1,16 @@
+{
+  "task": "Plan only. Save output/answer.json with milestones, write_owner, stop_on, recovery_path and rationale. No rollout has run.",
+  "constraints": {
+    "writes": "monolith",
+    "p95_budget_ms": 150,
+    "unexplained_mismatch_tolerance": 0
+  },
+  "teams": [
+    "service",
+    "platform"
+  ],
+  "available_paths": [
+    "monolith_read",
+    "service_read"
+  ]
+}

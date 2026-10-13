@@ -1,0 +1,14 @@
+{
+  "task": "Design a token/component migration in output/answer.json. Provide output/design.md with theme, state and consumer checks; this is a design task.",
+  "consumers": [
+    "product_a",
+    "product_b"
+  ],
+  "themes": [
+    "light",
+    "dark"
+  ],
+  "old_prop": "primaryColor",
+  "new_role": "action.background",
+  "contrast_measured": false
+}

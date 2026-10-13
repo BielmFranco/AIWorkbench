@@ -1,0 +1,29 @@
+{
+  "task": "Implement select_passages(documents, tenant) in output/solution.py. Return a list, tuple or set of IDs of passages that match tenant, are current and not deleted. Preserve input data. No ranking order is required. The filter runs BEFORE model context; no answer generation is requested.",
+  "documents": [
+    {
+      "id": "a2",
+      "tenant": "A",
+      "current": true,
+      "deleted": false
+    },
+    {
+      "id": "a1",
+      "tenant": "A",
+      "current": false,
+      "deleted": false
+    },
+    {
+      "id": "b1",
+      "tenant": "B",
+      "current": true,
+      "deleted": false
+    },
+    {
+      "id": "removed",
+      "tenant": "A",
+      "current": true,
+      "deleted": true
+    }
+  ]
+}
